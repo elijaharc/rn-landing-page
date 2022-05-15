@@ -12,3 +12,6 @@ const navigator = createStackNavigator({
 });
 
 export default createAppContainer(navigator);
+
+// For storybook:
+// export { default } from './storybook';
