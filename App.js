@@ -7,7 +7,7 @@ const navigator = createStackNavigator({
 }, {
   initialRouteName: "Home",
   defaultNavigationOptions: {
-    title: "Bridge"
+    title: "Bridge Landing Page"
   }
 });
 
