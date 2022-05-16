@@ -1,3 +1,10 @@
 import './Button/Button.stories';
 import './Welcome/Welcome.stories';
 import './Navbar/Navbar.stories';
+import './Hero/Hero.stories';
+import './CustomerLogos/CustomerLogos.stories';
+import './EmailBar/EmailBar.stories';
+import './Footer/Footer.stories';
+import './Image Detail/ImageDetail.stories';
+import './Mission/Mission.stories';
+import './Reviews/Reviews.stories';
