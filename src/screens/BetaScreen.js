@@ -1,11 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import EmailBar from "../components/EmailBar";
 import waitlist from "../api/waitlist";
+import i18n from "i18n-js";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const BetaScreen = () => {
+const BetaScreen = ({ navigation }) => {
+    const [lastRegisteredUser, setLastRegisteredUser] = useState({});
+    const [lastRegisteredUserFetched, setLastRegisteredUserFetched] = useState(false);
     const [email, setEmail] = useState("");
-    const [apiResponse, setApiResponse] = useState({});
+    useEffect(() => {
+        if (!lastRegisteredUserFetched) {
+            getCurrentEmail();
+        }
+    }, [lastRegisteredUser]);
+
+    const getCurrentEmail = async () => {
+        try {
+            const value = await AsyncStorage.getItem('lastRegisteredUser');
+            setLastRegisteredUser(JSON.parse(value));
+            setLastRegisteredUserFetched(true);
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    i18n.locale = navigation.state.params.locale;
+
     const params = JSON.stringify({
         "api_key": "JTFW8O",
         email,
@@ -19,8 +40,8 @@ const BetaScreen = () => {
                     "content-type": "application/json",
                 },
             });
-            setApiResponse(response.data);
-            console.log(apiResponse);
+            setLastRegisteredUser(response.data);
+            await AsyncStorage.setItem('lastRegisteredUser', JSON.stringify({ lastRegisteredEmail: response.data.registered_email, priority: response.data.current_priority }));
         } catch (err) {
             console.log(err);
         }
@@ -29,20 +50,20 @@ const BetaScreen = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.header}>
-                Thanks for your interest in our app!
+                {i18n.t('interest')}
             </Text>
             <Text style={styles.textStyle}>
-                Enter your email address to secure a slot in our waitlist for the beta.
+                {i18n.t('enterEmail')}
             </Text>
             <EmailBar
                 email={email}
                 onEmailChange={setEmail}
                 onEmailSubmit={handleSubmit} />
             <Text style={styles.textStyle}>
-                {apiResponse.current_priority != undefined ? "Congratulations, you're now in the waitlist!" : null}
+                {lastRegisteredUser !== null || lastRegisteredUser !== undefined ? `${i18n.t('congratulations')}` : null}
             </Text>
             <Text style={styles.waitlistStyle}>
-                {apiResponse.current_priority != undefined ? `Your waiting list position is: ${apiResponse.current_priority}` : null}
+                {lastRegisteredUser !== null || lastRegisteredUser !== undefined ? `${i18n.t('position')} ${lastRegisteredUser.priority}` : null}
             </Text>
         </View>
     );
@@ -74,6 +95,8 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         marginTop: 10,
+        paddingHorizontal: 40,
+        textAlign: 'center',
     },
     inputStyle: {
         backgroundColor: 'white',
