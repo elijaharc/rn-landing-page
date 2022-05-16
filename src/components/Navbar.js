@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const Navbar = () => {
+const Navbar = ({ navigation }) => {
     return (
         <View style={styles.parentNav}>
             <Text style={styles.logo}>BRIDGE</Text>
@@ -9,7 +9,7 @@ const Navbar = () => {
                 <TouchableOpacity>
                     <Text style={styles.textStyle}>Log in</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btnStyle}>
+                <TouchableOpacity style={styles.btnStyle} onPress={() => navigation.navigate('Beta')}>
                     <Text style={styles.btnTextStyle}>Apply for Beta</Text>
                 </TouchableOpacity>
             </View>
