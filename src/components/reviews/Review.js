@@ -3,7 +3,6 @@ import { View, Text, Image } from "react-native";
 import styles from "./Styles";
 
 const Review = ({ text, color, icon }) => {
-    console.log('Review: ', text, color, typeof icon);
     return (
         <View style={{
             backgroundColor: `${color}`,
