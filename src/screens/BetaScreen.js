@@ -1,9 +1,30 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import EmailBar from "../components/EmailBar";
+import waitlist from "../api/waitlist";
 
 const BetaScreen = () => {
     const [email, setEmail] = useState("");
+    const [apiResponse, setApiResponse] = useState({});
+    const params = JSON.stringify({
+        "api_key": "JTFW8O",
+        email,
+        "referral_link": "www.mywebsite.com?&ref_id=1234"
+    });
+
+    const handleSubmit = async () => {
+        try {
+            const response = await waitlist.post("/submit", params, {
+                "headers": {
+                    "content-type": "application/json",
+                },
+            });
+            setApiResponse(response.data);
+            console.log(apiResponse);
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     return (
         <View style={styles.container}>
@@ -15,8 +36,14 @@ const BetaScreen = () => {
             </Text>
             <EmailBar
                 email={email}
-                onEmailChange={newEmail => setEmail(newEmail)}
-                onEmailSubmit={() => console.log('Email submitted')} />
+                onEmailChange={setEmail}
+                onEmailSubmit={handleSubmit} />
+            <Text style={styles.textStyle}>
+                {apiResponse.current_priority != undefined ? "Congratulations, you're now in the waitlist!" : null}
+            </Text>
+            <Text style={styles.waitlistStyle}>
+                {apiResponse.current_priority != undefined ? `Your waiting list position is: ${apiResponse.current_priority}` : null}
+            </Text>
         </View>
     );
 }
@@ -41,6 +68,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 40,
         marginTop: 30,
         textAlign: 'center',
+    },
+    waitlistStyle: {
+        fontSize: 18,
+        color: 'white',
+        fontWeight: 'bold',
+        marginTop: 10,
     },
     inputStyle: {
         backgroundColor: 'white',
