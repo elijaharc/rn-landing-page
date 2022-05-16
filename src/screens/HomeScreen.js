@@ -5,13 +5,13 @@ import Hero from "../components/Hero";
 import Mission from "../components/Mission";
 import Footer from "../components/Footer";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
     return (
-        <SafeAreaView style={styles.container}>
-            <Navbar />
+        <SafeAreaView>
+            <Navbar navigation={navigation} />
             <ScrollView>
-                <Hero />
-                <Mission />
+                <Hero navigation={navigation} />
+                <Mission navigation={navigation} />
                 <Footer />
             </ScrollView>
         </SafeAreaView>

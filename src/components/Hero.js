@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-const Hero = () => {
+const Hero = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.header}>
@@ -10,7 +10,7 @@ const Hero = () => {
             <Text style={styles.textStyle}>
                 Connect people easily, yet personally. Offer intros at scale, discover warm intros, uncover insights, and connect the dots in real-time with the people you trust.
             </Text>
-            <TouchableOpacity style={styles.btnStyle}>
+            <TouchableOpacity style={styles.btnStyle} onPress={() => navigation.navigate('Beta')}>
                 <Text style={styles.btnTextStyle}>
                     Apply for Beta
                 </Text>

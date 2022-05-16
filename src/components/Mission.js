@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-const Mission = () => {
+const Mission = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.icon}>
@@ -13,7 +13,7 @@ const Mission = () => {
             <Text style={styles.textStyle}>
                 We believe one connection can change a life. That’s why we’re on a mission to help people connect in easier, smarter and more productive ways.
             </Text>
-            <TouchableOpacity style={styles.btnStyle}>
+            <TouchableOpacity style={styles.btnStyle} onPress={() => navigation.navigate('Beta')}>
                 <Text style={styles.btnTextStyle}>
                     Apply for Beta
                 </Text>
