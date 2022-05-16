@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, SafeAreaView, ScrollView } from "react-native";
 import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
+import Hero from "../components/hero/Hero";
 import Mission from "../components/Mission";
 import Footer from "../components/Footer";
+import i18n from 'i18n-js';
+import { en, ph } from '../../i18n/supportedLanguages';
+i18n.fallbacks = true;
+i18n.translations = { en, ph };
 
 const HomeScreen = ({ navigation }) => {
+    const [locale, setLocale] = useState("en");
+
+    i18n.locale = locale;
+
     return (
         <SafeAreaView>
-            <Navbar navigation={navigation} />
+            <Navbar
+                navigation={navigation}
+                locale={locale}
+                setLocale={setLocale} />
             <ScrollView>
-                <Hero navigation={navigation} />
-                <Mission navigation={navigation} />
-                <Footer />
+                <Hero navigation={navigation}
+                    locale={locale} />
+                <Mission navigation={navigation}
+                    locale={locale} />
+                <Footer locale={locale} />
             </ScrollView>
         </SafeAreaView>
     );
