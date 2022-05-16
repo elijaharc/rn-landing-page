@@ -1,21 +1,24 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import i18n from "i18n-js";
 
-const Mission = ({ navigation }) => {
+const Mission = ({ navigation, locale }) => {
+    i18n.locale = locale;
+
     return (
         <View style={styles.container}>
             <Text style={styles.icon}>
                 Icon
             </Text>
             <Text style={styles.header}>
-                Our mission
+                {i18n.t('mission')}
             </Text>
             <Text style={styles.textStyle}>
-                We believe one connection can change a life. That’s why we’re on a mission to help people connect in easier, smarter and more productive ways.
+                {i18n.t('weBelieve')}
             </Text>
-            <TouchableOpacity style={styles.btnStyle} onPress={() => navigation.navigate('Beta')}>
+            <TouchableOpacity style={styles.btnStyle} onPress={() => navigation.navigate('Beta', { locale: locale })}>
                 <Text style={styles.btnTextStyle}>
-                    Apply for Beta
+                    {i18n.t('betaApply')}
                 </Text>
             </TouchableOpacity>
         </View>

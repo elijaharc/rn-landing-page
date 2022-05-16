@@ -1,14 +1,17 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import i18n from "i18n-js";
 
-const Footer = () => {
+const Footer = ({ locale }) => {
+    i18n.locale = locale;
+
     return (
         <View style={styles.container}>
             <Text>
                 Icon
             </Text>
             <Text style={styles.header}>
-                Making the world a smaller place
+                {i18n.t('smallerPlace')}
             </Text>
             <Text style={styles.textStyle}>
                 Copyright © 2022, Bridge. All rights reserved.
