@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { StyleSheet, SafeAreaView, ScrollView } from "react-native";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar/Navbar";
 import Hero from "../components/hero/Hero";
-import Mission from "../components/Mission";
-import Footer from "../components/Footer";
+import Mission from "../components/mission/Mission";
+import Footer from "../components/footer/Footer";
 import i18n from 'i18n-js';
 import { en, ph } from '../../i18n/supportedLanguages';
 i18n.fallbacks = true;
