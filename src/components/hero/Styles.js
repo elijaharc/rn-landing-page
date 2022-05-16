@@ -3,8 +3,9 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#06f',
-        height: 500,
+        height: 1050,
         alignItems: 'center',
+        // marginTop: 30,
     },
     header: {
         fontSize: 40,
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: 'white',
         paddingHorizontal: 40,
-        marginTop: 10,
+        marginTop: 15,
         textAlign: 'center',
     },
     btnStyle: {
@@ -35,6 +36,16 @@ const styles = StyleSheet.create({
     miniLogo: {
         borderRadius: 50,
         overflow: 'hidden'
+    },
+    imageContainer: {
+        flexDirection: 'row',
+        marginTop: 25,
+        marginBottom: 35
+    },
+    imageStyle: {
+        borderRadius: 50,
+        overflow: 'hidden',
+        margin: -3
     }
 });
 

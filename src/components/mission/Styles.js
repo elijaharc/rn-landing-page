@@ -2,9 +2,10 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     container: {
-        height: 300,
+        height: 400,
         alignItems: 'center',
         paddingTop: 20,
+        backgroundColor: '#F9F9FA',
     },
     header: {
         fontSize: 20,

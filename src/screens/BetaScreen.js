@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import EmailBar from "../components/EmailBar";
+import EmailBar from "../components/emailBar/EmailBar";
 import waitlist from "../api/waitlist";
 import i18n from "i18n-js";
 import AsyncStorage from '@react-native-async-storage/async-storage';

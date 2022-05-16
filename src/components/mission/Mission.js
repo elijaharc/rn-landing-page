@@ -2,15 +2,16 @@ import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import i18n from "i18n-js";
 import styles from "./Styles";
+import BridgeIcon from "../../../assets/svg/BridgeIcon";
 
 const Mission = ({ navigation, locale }) => {
     i18n.locale = locale;
 
     return (
         <View style={styles.container}>
-            <Text style={styles.icon}>
-                Icon
-            </Text>
+            <View style={styles.icon}>
+                <BridgeIcon />
+            </View>
             <Text style={styles.header}>
                 {i18n.t('mission')}
             </Text>
