@@ -1,9 +1,11 @@
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import HomeScreen from "./src/screens/HomeScreen";
+import BetaScreen from "./src/screens/BetaScreen";
 
 const navigator = createStackNavigator({
-  Home: HomeScreen
+  Home: HomeScreen,
+  Beta: BetaScreen
 }, {
   initialRouteName: "Home",
   defaultNavigationOptions: {
