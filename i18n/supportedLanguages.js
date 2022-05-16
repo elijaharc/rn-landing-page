@@ -8,7 +8,8 @@ const en = {
     interest: 'Thanks for your interest in our app!',
     enterEmail: 'Enter your email address to secure a slot in our waitlist for the beta.',
     congratulations: "Congratulations, you're in the waitlist!",
-    position: 'Your waiting list position is:'
+    position: 'Your waiting list position is:',
+    join: 'Join Ankur Nagpal and the thousands of people who are helping make the world a smaller place through Bridge.'
 };
 
 const ph = {
@@ -21,7 +22,8 @@ const ph = {
     interest: 'Salamat sa iyong interes sa aming app!',
     enterEmail: 'Ipasok ang iyong email address upang ma -secure ang isang slot sa aming listahan ng paghihintay para sa beta.',
     congratulations: 'Binabati kita, nasa listahan ka na!',
-    position: 'Ang posisyon ng iyong listahan ng paghihintay ay:'
+    position: 'Ang posisyon ng iyong listahan ng paghihintay ay:',
+    join: 'Sumali kay Ankur Nagpal at sa libu-libong tao na tumutulong na gawing mas maliit na lugar ang mundo sa pamamagitan ng Bridge.'
 };
 
 export { en, ph };
