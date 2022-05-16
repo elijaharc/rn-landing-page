@@ -24,7 +24,7 @@ const Hero = ({ navigation, locale }) => {
                 </Text>
             </TouchableOpacity>
             <Text style={styles.textStyle}>
-                Join Ankur Nagpal and the thousands of people who are helping make the world a smaller place through Bridge.
+                {i18n.t('join')}
             </Text>
             <View style={styles.imageContainer}>
                 <View style={styles.imageStyle}>
