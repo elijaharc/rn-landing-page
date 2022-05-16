@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import CountryFlag from "react-native-country-flag";
 import i18n from 'i18n-js';
-import BridgeLogo from '../svg/BridgeLogo';
+import BridgeLogo from '../../../assets/svg/BridgeLogo';
+import styles from './Styles';
 
 const Navbar = ({ navigation, locale, setLocale }) => {
     i18n.locale = locale;
@@ -31,39 +32,5 @@ const Navbar = ({ navigation, locale, setLocale }) => {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    parentNav: {
-        height: 55,
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flexDirection: 'row',
-        marginHorizontal: 20,
-    },
-    navButtons: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        height: 40,
-        width: 180,
-        justifyContent: 'space-between',
-    },
-    btnTextStyle: {
-        color: 'white',
-        paddingHorizontal: 12,
-        paddingVertical: 9,
-        fontSize: 13,
-        fontWeight: 'bold',
-    },
-    textStyle: {
-        color: '#0038ff',
-        fontWeight: '600',
-    },
-    btnStyle: {
-        backgroundColor: '#0038ff',
-        borderRadius: 50,
-        marginRight: 1,
-        paddingHorizontal: 3,
-    }
-});
 
 export default Navbar;

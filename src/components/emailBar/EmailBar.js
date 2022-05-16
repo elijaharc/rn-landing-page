@@ -1,5 +1,6 @@
 import React from "react";
-import { View, StyleSheet, TextInput } from "react-native";
+import { View, TextInput } from "react-native";
+import styles from "./Styles";
 
 const EmailBar = ({ email, onEmailChange, onEmailSubmit }) => {
     return (
@@ -15,21 +16,5 @@ const EmailBar = ({ email, onEmailChange, onEmailSubmit }) => {
         </View >
     );
 }
-
-const styles = StyleSheet.create({
-    backgroundStyle: {
-        backgroundColor: 'white',
-        borderRadius: 30,
-        marginTop: 30,
-        height: 50,
-        width: 300,
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingHorizontal: 20,
-    },
-    inputStyle: {
-        fontSize: 16,
-    }
-});
 
 export default EmailBar;

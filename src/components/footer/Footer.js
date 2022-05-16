@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text } from "react-native";
 import i18n from "i18n-js";
+import styles from "./Styles";
 
 const Footer = ({ locale }) => {
     i18n.locale = locale;
@@ -22,34 +23,5 @@ const Footer = ({ locale }) => {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        height: 200,
-        alignItems: 'center',
-        paddingTop: 20,
-        marginTop: 120,
-    },
-    header: {
-        fontSize: 12,
-        paddingTop: 10,
-        marginBottom: 10
-    },
-    textStyle: {
-        fontSize: 10,
-        paddingHorizontal: 80,
-        marginTop: 10,
-        color: 'grey'
-    },
-    btnStyle: {
-        backgroundColor: '#06f',
-        borderRadius: 5,
-        padding: 10,
-        marginTop: 20,
-    },
-    btnTextStyle: {
-        color: 'white',
-    }
-});
 
 export default Footer;
