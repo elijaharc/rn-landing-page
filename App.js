@@ -4,13 +4,13 @@ import HomeScreen from "./src/screens/HomeScreen";
 import BetaScreen from "./src/screens/BetaScreen";
 
 const navigator = createStackNavigator({
-  Home: HomeScreen,
-  Beta: BetaScreen
+    Home: HomeScreen,
+    Beta: BetaScreen
 }, {
-  initialRouteName: "Home",
-  defaultNavigationOptions: {
-    title: "Bridge Landing Page"
-  }
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+        title: "Bridge Landing Page"
+    }
 });
 
 export default createAppContainer(navigator);
