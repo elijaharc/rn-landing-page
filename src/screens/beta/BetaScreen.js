@@ -1,48 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useState, useContext } from "react";
+import { View, Text } from "react-native";
 import EmailBar from "../../components/emailBar/EmailBar";
-import waitlist from "../../api/waitlist";
+import WaitlistService from "../../api/waitlist/waitlist.service";
 import i18n from "i18n-js";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from "./Styles";
+import { Context as LocaleContext } from "../../context/LocaleContext";
+import { Context as UserContext } from '../../context/UserContext';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const BetaScreen = ({ navigation }) => {
-    const [lastRegisteredUser, setLastRegisteredUser] = useState({});
-    const [lastRegisteredUserFetched, setLastRegisteredUserFetched] = useState(false);
+const BetaScreen = () => {
+    const localeState = useContext(LocaleContext);
+    const userState = useContext(UserContext);
+    const saveLastUser = userState.saveLastUser;
+    const lastRegisteredUser = userState.state;
     const [email, setEmail] = useState("");
-    i18n.locale = navigation.state.params.locale;
-
-    useEffect(() => {
-        if (!lastRegisteredUserFetched) {
-            getCurrentEmail();
-        }
-    }, [lastRegisteredUser]);
-
-    const getCurrentEmail = async () => {
-        try {
-            const value = await AsyncStorage.getItem('lastRegisteredUser');
-            setLastRegisteredUser(JSON.parse(value));
-            setLastRegisteredUserFetched(true);
-        } catch (err) {
-            console.log(err)
-        }
-    }
-
-    const params = JSON.stringify({
-        "api_key": "JTFW8O",
-        email,
-        "referral_link": "www.mywebsite.com?&ref_id=1234"
-    });
+    i18n.locale = localeState.state.locale;
 
     const handleSubmit = async () => {
         try {
-            const response = await waitlist.post("/submit", params, {
-                "headers": {
-                    "content-type": "application/json",
-                },
-            });
-            setLastRegisteredUser(response.data);
-            await AsyncStorage.setItem('lastRegisteredUser', JSON.stringify({ lastRegisteredEmail: response.data.registered_email, priority: response.data.current_priority }));
+            const response = await WaitlistService.postWaitlist(email);
+            saveLastUser(response.data.email, response.data.priority);
         } catch (err) {
             console.log(err);
         }
@@ -61,10 +38,10 @@ const BetaScreen = ({ navigation }) => {
                 onEmailChange={setEmail}
                 onEmailSubmit={handleSubmit} />
             <Text style={styles.textStyle}>
-                {lastRegisteredUser !== null || lastRegisteredUser !== undefined ? `${i18n.t('congratulations')}` : null}
+                {lastRegisteredUser.email !== "" || lastRegisteredUser.priority !== "" ? `${i18n.t('congratulations')}` : null}
             </Text>
             <Text style={styles.waitlistStyle}>
-                {lastRegisteredUser !== null || lastRegisteredUser !== undefined ? `${i18n.t('position')} ${lastRegisteredUser.priority}` : null}
+                {lastRegisteredUser.email !== "" || lastRegisteredUser.priority !== "" ? `${i18n.t('position')} ${lastRegisteredUser.priority}` : null}
             </Text>
         </View>
     );
