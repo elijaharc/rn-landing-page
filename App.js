@@ -1,9 +1,9 @@
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import { Provider as LocaleProvider } from "./src/context/LocaleContext";
-import { Provider as UserProvider } from "./src/context/UserContext";
+import { Provider } from "react-redux";
 import HomeScreen from "./src/screens/HomeScreen";
 import BetaScreen from "./src/screens/beta/BetaScreen";
+import store from "./src/redux/Store";
 
 const navigator = createStackNavigator({
     Home: HomeScreen,
@@ -19,11 +19,9 @@ const App = createAppContainer(navigator);
 
 export default () => {
     return (
-        <LocaleProvider>
-            <UserProvider>
-                <App />
-            </UserProvider>
-        </LocaleProvider>
+        <Provider store={store}>
+            <App />
+        </Provider>
     )
 }
 
