@@ -36,16 +36,6 @@ const styles = StyleSheet.create({
     miniLogo: {
         borderRadius: 50,
         overflow: 'hidden'
-    },
-    imageContainer: {
-        flexDirection: 'row',
-        marginTop: 25,
-        marginBottom: 35
-    },
-    imageStyle: {
-        borderRadius: 50,
-        overflow: 'hidden',
-        margin: -3
     }
 });
 
