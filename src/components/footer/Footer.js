@@ -1,13 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { View, Text } from "react-native";
 import i18n from "i18n-js";
 import styles from "./Styles";
 import BridgeGreyIcon from "../../../assets/svg/BridgeGreyIcon";
-import { Context as LocaleContext } from "../../context/LocaleContext";
+import { connect } from "react-redux";
 
-const Footer = () => {
-    const { state } = useContext(LocaleContext)
-    i18n.locale = state.locale;
+const Footer = ({ locale }) => {
+    i18n.locale = locale;
 
     return (
         <View style={styles.container}>
@@ -29,4 +28,12 @@ const Footer = () => {
     );
 }
 
-export default Footer;
+const mapStateToProps = (state) => (
+    // instead of state as props, we can destructure it too: {selectedLocale, user}
+    // If we didn't destructure, we could use 'state' as params
+    { locale: state.selectedLocale.locale }
+);
+
+const connectComponent = connect(mapStateToProps);
+
+export default connectComponent(Footer);
