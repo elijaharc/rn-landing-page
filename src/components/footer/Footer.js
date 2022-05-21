@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text } from "react-native";
 import i18n from "i18n-js";
 import styles from "./Styles";
 import BridgeGreyIcon from "../../../assets/svg/BridgeGreyIcon";
-const Footer = ({ locale }) => {
-    i18n.locale = locale;
+import { Context as LocaleContext } from "../../context/LocaleContext";
+
+const Footer = () => {
+    const { state } = useContext(LocaleContext)
+    i18n.locale = state.locale;
 
     return (
         <View style={styles.container}>
